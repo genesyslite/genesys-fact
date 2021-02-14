@@ -5,7 +5,6 @@ namespace GenesysLite\GenesysFact\Models;
 use GenesysLite\GenesysBusiness\Models\Establishment;
 use GenesysLite\GenesysCatalog\Models\DocumentType;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Document\Models\SeriesConfiguration;
 
 class Series extends Model
 {
