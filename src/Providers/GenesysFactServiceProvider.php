@@ -2,6 +2,7 @@
 
 namespace GenesysLite\GenesysFact\Providers;
 
+use GenesysLite\GenesysFact\Commands\CreateUser;
 use GenesysLite\GenesysFact\InputRequest;
 use GenesysLite\GenesysFact\Models\Document;
 use GenesysLite\GenesysFact\Observers\DocumentObserver;
@@ -40,5 +41,8 @@ class GenesysFactServiceProvider extends ServiceProvider
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('input.request', InputRequest::class);
         Document::observe(DocumentObserver::class);
+        $this->commands([
+            CreateUser::class
+        ]);
     }
 }
