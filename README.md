@@ -8,3 +8,15 @@ php artisan migrate
 ``` bash
 php artisan user:create
 ```
+## Agregar al modelo Models\User.php
+```
+...
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'api_token',
+        'establishment_id',
+    ];
+...
+```
