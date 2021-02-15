@@ -55,5 +55,49 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../genesys-fact",
+            "options": {
+                "symlink" : true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../genesys-ubigee",
+            "options": {
+                "symlink" : true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../genesys-catalog",
+            "options": {
+                "symlink" : true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../genesys-business",
+            "options": {
+                "symlink" : true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../genesys-crm",
+            "options": {
+                "symlink" : true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../genesys-inventory",
+            "options": {
+                "symlink" : true
+            }
+        }
+    ]
 }
