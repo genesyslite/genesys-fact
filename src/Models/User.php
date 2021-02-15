@@ -9,8 +9,6 @@ use \App\Models\User as UserModel;
 
 class User extends UserModel
 {
-    protected $table = 'series';
-
     protected $fillable = [
         'name',
         'email',
