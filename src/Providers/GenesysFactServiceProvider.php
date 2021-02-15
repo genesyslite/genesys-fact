@@ -3,10 +3,12 @@
 namespace GenesysLite\GenesysFact\Providers;
 
 use GenesysLite\GenesysFact\Commands\CreateUser;
+use GenesysLite\GenesysFact\Commands\ExportGraphql;
 use GenesysLite\GenesysFact\InputRequest;
 use GenesysLite\GenesysFact\Models\Document;
 use GenesysLite\GenesysFact\Observers\DocumentObserver;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 
 class GenesysFactServiceProvider extends ServiceProvider
@@ -18,10 +20,7 @@ class GenesysFactServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../config/genesysFact.php',
-            'genesysFact'
-        );
+        $this->registerConfig();
     }
 
     /**
@@ -42,7 +41,33 @@ class GenesysFactServiceProvider extends ServiceProvider
         $router->aliasMiddleware('input.request', InputRequest::class);
         Document::observe(DocumentObserver::class);
         $this->commands([
-            CreateUser::class
+            CreateUser::class,
+            ExportGraphql::class
         ]);
+    }
+
+    /**
+     * Register config.
+     *
+     * @return void
+     */
+    protected function registerConfig()
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/genesysFact.php',
+            'genesysFact'
+        );
+
+        $this->publishes([
+            __DIR__.'/../../config/genesysFact.php' => config_path('genesysFact.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../../graphql' => base_path('/graphql/GenesysFact'),
+        ], 'genesys-fact-schema');
+
+        $this->publishes([
+            __DIR__.'/../../database/migrations' => base_path('database/migrations'),
+        ], 'migrations');
     }
 }

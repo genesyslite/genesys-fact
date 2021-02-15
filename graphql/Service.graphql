@@ -1,0 +1,8 @@
+type resultServiceExchange {
+    date: String
+    sale: String
+}
+
+extend type Query {
+    exchangeRate(date: String!): resultServiceExchange @field(resolver: "GenesysLite\\GenesysFact\\GraphQL\\Queries\\Services@exchangeRate")
+}

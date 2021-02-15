@@ -1,0 +1,41 @@
+type DocumentItem {
+    id: ID!
+    item_id: String!
+    item2: ItemDocument
+    item: Item! @belongsTo
+    quantity: Float!
+    unit_value: Float!
+    affectation_igv_type_id: String!
+    total_base_igv: Float!
+    percentage_igv: Float!
+    total_igv: Float!
+    total_igv: String!
+    system_isc_type_id: String
+    total_base_isc: Float!
+    percentage_isc: Float!
+    total_isc: Float!
+    total_base_other_taxes: Float!
+    percentage_other_taxes: Float!
+    total_other_taxes: Float!
+    total_taxes: Float!
+    price_type_id: String!
+    unit_price: Float!
+    total_value: Float!
+    total_charge: Float!
+    total_discount: Float!
+    total: Float!
+    attributes: String
+    charges: String
+    discounts: String
+}
+type ItemDocument {
+    is_set: Boolean
+    item_code: String
+    description: String
+    internal_id: String
+    item_type_id: String
+    unit_type_id: String
+    item_code_gs1: String
+    IdLoteSelected: String
+    amount_plastic_bag_taxes: String
+}
